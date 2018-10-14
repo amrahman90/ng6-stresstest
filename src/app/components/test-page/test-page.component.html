@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="top">
+        <h2>3 Ebenen-Stress-Test</h2>
+        <mat-progress-bar mode="determinate" color="primary" value="{{progress}}" #x></mat-progress-bar>
+        <p>Überlegen Sie bei jedem Symptom genau, wie oft und wie stark Sie diese Reaktion in der letzten Zeit an sich bemerkt haben, und wählen Sie je bei „Häufigkeitsgrad" und „Stärkegrad".</p>
+    </div>
+    <div class="questions">
+        <mat-card>
+            <h4>{{questions[question_number].text}}</h4>
+            <div class="question_type">
+                <h4>Häufigkeitsgrad</h4>
+                <mat-slider min="0" max="7" thumbLabel step="1" [(ngModel)]="questions[question_number].degree_of_frequency" value="questions[question_number].degree_of_frequency"></mat-slider>
+            </div>
+            <div class="question_type">
+                <h4>Stärkegrad</h4>
+                <mat-slider min="0" max="7" thumbLabel step="1" [(ngModel)]="questions[question_number].strength_level" value="questions[question_number].strength_level"></mat-slider>
+            </div>
+        </mat-card>
+    </div>
+    <div class="bottom">
+        <button *ngIf="question_number!=0" (click)="previousQuestion()" mat-raised-button>vorherige Frage</button>
+        <button *ngIf="question_number != (questions.length - 1)" (click)='nextQuestion()' mat-raised-button color="primary">nächste
+  Frage</button>
+        <button *ngIf="question_number==(questions.length - 1)" (click)="evaluate()" mat-raised-button color="accent">Test auswerten</button>
+    </div>
+</div>
