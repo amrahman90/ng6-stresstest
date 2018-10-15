@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!status">
     <div class="top">
         <h2>3 Ebenen-Stress-Test</h2>
         <mat-progress-bar mode="determinate" color="primary" value="{{progress}}" #x></mat-progress-bar>
@@ -6,7 +6,7 @@
     </div>
     <div class="questions">
         <mat-card>
-            <h4>{{questions[question_number].text}}</h4>
+            <h4>{{questions[question_number].id}}. {{questions[question_number].text}}</h4>
             <div class="question_type">
                 <h4>Häufigkeitsgrad</h4>
                 <mat-slider min="0" max="7" thumbLabel step="1" [(ngModel)]="questions[question_number].degree_of_frequency" value="questions[question_number].degree_of_frequency"></mat-slider>
@@ -22,5 +22,110 @@
         <button *ngIf="question_number != (questions.length - 1)" (click)='nextQuestion()' mat-raised-button color="primary">nächste
   Frage</button>
         <button *ngIf="question_number==(questions.length - 1)" (click)="evaluate()" mat-raised-button color="accent">Test auswerten</button>
+    </div>
+</div>
+
+<div class="container" *ngIf="status">
+    <div class="heading">
+        <h1>Testergebnisse</h1>
+        <p>nach Dr. Günther Kimpfler, alfa media institut</p>
+        <h4>Die statistische Auswertung Ihrer Test-Ergebnisse ergibt für Sie einen Gesamt-Punkte-Wert von</h4>
+    </div>
+    <div class="result">
+        <h1>{{total}}</h1>
+        <div class="division">
+            <mat-card>
+                <mat-progress-spinner [color]="color1" [mode]="mode2" [value]="value3"></mat-progress-spinner>
+                <p>{{value1}}%</p>
+                <h3>Mental Kognitiv</h3>
+            </mat-card>
+        </div>
+        <div class="division">
+            <mat-card>
+                <mat-progress-spinner [color]="color2" [mode]="mode2" [value]="value3"></mat-progress-spinner>
+                <p>{{value2}}%</p>
+                <h3>Physiologisch Vegetativ</h3>
+            </mat-card>
+        </div>
+        <div class="division">
+            <mat-card>
+                <mat-progress-spinner [color]="color3" [mode]="mode2" [value]="value3"></mat-progress-spinner>
+                <p>{{value3}}%</p>
+                <h3>Muskulär Motorisch</h3>
+            </mat-card>
+        </div>
+        <p>Dieser Punkte-Wert soll Ihnen als wichtige erste Orientierung für Ihre ganzheitliche Belastbarkeit und Ihre persönliche Stress-Gefährdung dienen. Er soll Sie gleichzeitig sensibilisieren und neugierig machen und Sie in den empfohlenen Maßnahmen
+            Ihrer Bewältigungs-Strategie unterstützen. Mit Ihrem Gesamtwert von {{total}} Punkten liegen Sie innerhalb von 5 Belastbarkeits-Stufen in der Belastbarkeits-Stufe {{type_number}}.
+        </p>
+    </div>
+    <div class="synopsis">
+        <div class="box">
+            <mat-card>
+                <h2>{{head}}</h2>
+                <p>{{text}}</p>
+            </mat-card>
+        </div>
+    </div>
+    <div class="tips">
+        <h2>Die Belastung Ihrer 3 Nervensysteme und Reaktions-Ebenen</h2>
+        <p>Der ganzheitliche SCT erfasst nicht nur Ihren Gesamt-Wert der Belastbarkeit, sondern er kann auch die unterschiedliche Belastbarkeit auf jeder der 3 nervlichen Reaktions-Ebenen für Sie bestimmen. Je nachdem, wie bei Ihnen jede einzelne Verhaltens-Ebene
+            stärker oder schwächer belastet ist als die anderen, sind hier auch Empfehlungen für symptomatisch entspannende Maßnahmen möglich.</p>
+
+        <mat-accordion>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Die mental-kognitive Ebene
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{value1}}%
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <h2> Konzentration</h2>
+                <p>Achtsamkeits-Training, Stopp-Training, Alltags-Disziplin für Ziele und Tages- Wochen-Pläne, Arbeitstechniken, Mini-Trance nach Dr. Kimpfler</p>
+                <h2> Instrumentell</h2>
+                <p>ipods, USB-Sticks, CD’s und andere Medien-Träger für Podcasting, Meditations-Musik und andere auch gesprochene mentale Entspannungs-Anleitungen und Hilfen</p>
+                <h2> Meditation</h2>
+                <p>Meditations-Übungen im Sitzen, im Stehen, in der Bewegung mit unterschiedlichen Konzentrationstechniken (akustisch, optisch, olfaktorisch, haptisch ...)</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Die physiologisch-vegetative Ebene
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{value2}}%
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <h2>Suggestiv</h2>
+                <p>Autogenes Training, Selbst-Hypnose, Mini-Trance nach Dr. Kimpfler, Selbst-Affirmation, Selbst-Suggestion, Achtsamkeit</p>
+                <h2>Emotional</h2>
+                <p>Gefühls-Training (Achtsamkeit), Gefühle zulassen, Gefühle äußern (nicht schlucken), Selbstsicherheits-Training, wachbewusste, entspannte Zärtlichkeit und Sexualität</p>
+                <h2>Physiologisch</h2>
+                <p>Sauna, Kreislauftraining, Wechselbäder, Kneipp-Regeln, gesundes Schlafverhalten (Ort, Situation, Störungen, Schlaf-Zeiten, Schlaf-Dauer, Schlaf-Umstände, Ernährung</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Die muskulär-motorische Ebene
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{value3}}%
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <h2> Bewegung</h2>
+                <p>Ausdauer-Bewegung: Langsamlauf („Joggeln“), Walking, Skating, Radfahren, Wandern, Spazierengehen, Schwimmen
+                </p>
+                <h2> Dehnung</h2>
+                <p>Gezieltes softes Rückentraining, auch situativ für’s Büro, Hatha Yoga Variationen, Stretching, Gezielte Massage, Dehnungs-Übungen nach Dr. Kimpfler</p>
+                <h2> Entspannung</h2>
+                <p>Progressive Muskelentspannung nach Dr. Kimpfler (Wirkung steht in Wikipedia), Achtsamkeits-Übungen, Verschiedene Yoga-Übungen für die Motorik</p>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
     </div>
 </div>

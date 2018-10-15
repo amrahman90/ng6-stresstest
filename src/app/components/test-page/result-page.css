@@ -1,0 +1,121 @@
+.heading h1 {
+    font-size: 40px;
+}
+
+.result {
+    padding: 2%;
+    background: whitesmoke;
+}
+
+.result h1 {
+    font-size: 100px;
+    margin: 16px;
+}
+
+.result p {
+    font-size: 16px;
+}
+
+.division {
+    padding: 1em;
+    text-align: center;
+    width: 30%;
+    display: inline-block;
+}
+
+.division mat-progress-spinner {
+    display: inline-block;
+}
+
+.division mat-card {
+    padding: 3em;
+}
+
+.division p {
+    font-size: 25px;
+}
+
+.division h3 {
+    color: #293345;
+}
+
+@media screen and (min-width:500px) and (max-width: 1173px) {
+    .division {
+        width: 100%;
+        margin-left: -2%;
+    }
+}
+
+@media screen and (min-width:0px) and (max-width: 500px) {
+    .division {
+        width: 100%;
+        margin-left: -5%;
+    }
+}
+
+.synopsis {
+    padding: 10px;
+}
+
+.box {
+    margin-top: 2em;
+}
+
+.box mat-card {
+    padding: 22px;
+}
+
+.box h2 {
+    font-size: 25px;
+    margin-top: 1em;
+    color: #515170;
+}
+
+.box p {
+    font-size: 15px;
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+
+.tips {
+    padding: 20px;
+    background: whitesmoke;
+    margin-top: 1em;
+}
+
+.tips h2 {
+    font-size: 25px;
+    margin-top: 1em;
+    color: #515170;
+}
+
+.tips p {
+    font-size: 15px;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.tips mat-expansion-panel {
+    margin-bottom: 1em;
+}
+
+.tips mat-accordion mat-panel-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.tips mat-accordion {
+    text-align: left;
+}
+
+.tips mat-accordion h2 {
+    font-size: 18px;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.tips mat-accordion p {
+    margin: 0;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
